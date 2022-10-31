@@ -34,7 +34,7 @@ android {
 
 dependencies {
 
-    implementation libs.coreKtx
+    implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation libs.material.theme
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -48,4 +48,5 @@ dependencies {
 
     //retrofit
     implementation libra.retrofit
+    implementation libra.retrofit.moshi
 }
