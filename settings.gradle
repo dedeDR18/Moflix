@@ -1,11 +1,4 @@
 pluginManagement {
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id.startsWith("com.android.application")) {
-                useModule("com.android.application:${requested.version}")
-            }
-        }
-    }
     repositories {
         gradlePluginPortal()
         google()
@@ -19,8 +12,24 @@ dependencyResolutionManagement {
         mavenCentral()
     }
     versionCatalogs {
-        create("libs"){
-            plugin("android-application", "com.android.application").version("7.3.0")
+        create("libra"){
+            //timber
+            version("timber","5.0.1")
+            version("retrofit","2.9.0")
+            version("okhttp","4.10.0")
+            version("glide","4.13.2")
+            version("sandwich","1.3.2")
+            version("hilt","2.44")
+            version("moshi","1.14.0")
+
+
+            library("timber", "com.jakewharton.timber", "timber").versionRef("timber")
+            library("retrofit", "com.squareup.retrofit2", "retrofit").versionRef("retrofit")
+
+
+
+            plugin("android", "com.android.application").version("7.3.0")
+            plugin("kotlinAndroid", "org.jetbrains.kotlin.android").version("1.7.20")
         }
     }
 }
