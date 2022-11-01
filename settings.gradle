@@ -45,3 +45,4 @@ include ':app'
 include ':core-model'
 
 enableFeaturePreview("VERSION_CATALOGS")
+include ':core-network'
