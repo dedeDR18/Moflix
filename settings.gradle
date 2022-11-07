@@ -46,3 +46,4 @@ include ':core-model'
 
 enableFeaturePreview("VERSION_CATALOGS")
 include ':core-network'
+include ':core-database'
