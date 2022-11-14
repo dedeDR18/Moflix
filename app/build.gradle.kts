@@ -1,3 +1,6 @@
+plugins {
+    id("org.jetbrains.kotlin.android")
+}
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id(libs.plugins.android.application.get().pluginId)
@@ -45,7 +48,10 @@ android {
 
 dependencies {
 
-    // modules for unit test
+    // modules
+    implementation(project(":core-data"))
+    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation(project(":core-network"))
     testImplementation(project(":core-database"))
 
