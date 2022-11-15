@@ -1,6 +1,3 @@
-plugins {
-    id("org.jetbrains.kotlin.android")
-}
 @Suppress("DSL_SCOPE_VIOLATION")
 plugins {
     id(libs.plugins.android.application.get().pluginId)
@@ -50,16 +47,17 @@ dependencies {
 
     // modules
     implementation(project(":core-data"))
-    implementation("androidx.appcompat:appcompat:1.5.1")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation(project(":core-network"))
-    testImplementation(project(":core-database"))
+    implementation(project(":core-network"))
+    implementation(project(":core-database"))
 
     // androidx
     implementation(libs.material)
     implementation(libs.androidx.fragment)
     implementation(libs.androidx.lifecycle)
     implementation(libs.androidx.startup)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.constraintLayout)
+
 
     // data binding
     implementation(libs.bindables)
