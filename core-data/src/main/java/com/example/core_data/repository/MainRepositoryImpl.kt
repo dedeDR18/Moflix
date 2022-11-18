@@ -1,5 +1,6 @@
 package com.example.core_data.repository
 
+import android.util.Log
 import com.example.core_database.MovieDao
 import com.example.core_database.entity.mapper.asDomain
 import com.example.core_database.entity.mapper.asEntity
@@ -28,20 +29,25 @@ class MainRepositoryImpl @Inject constructor(
         onComplete: () -> Unit,
         onError: (String?) -> Unit
     ) = flow {
-        var movies = movieDao.getAllDiscoverMovie(page).asDomain()
+        var movies = movieDao.getDiscoverMovieList().asDomain()
         if (movies.isEmpty()) {
+            Log.d("MAINREPO", "page = ${page}")
             val response = tmdbClient.fetchDiscoverMovie(page)
             response.suspendOnSuccess {
                 movies = data.results
-                movies.forEach { movie -> movie.page = data.page }
+                movies.forEach { movie ->
+                    movie.page = 1
+                }
                 movieDao.insertMovie(movies.asEntity())
-                emit(movieDao.getAllDiscoverMovie(data.page).asDomain())
+                emit(movieDao.getAllDiscoverMovie().asDomain())
+
 
             }.onFailure {
                 onError(message())
             }
         } else {
-            emit(movieDao.getAllDiscoverMovie(page).asDomain())
+            emit(movieDao.getAllDiscoverMovie().asDomain())
+
         }
     }.onStart { onStart() }.onCompletion { onComplete() }.flowOn(ioDispatcher)
 

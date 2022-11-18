@@ -24,6 +24,11 @@ class MovieAdapter : BindingListAdapter<Movie, MovieAdapter.MovieViewHolder>(dif
     inner class MovieViewHolder constructor(
         private val binding: ItemMovieBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
+        init {
+
+        }
+
         fun bindMovie(movie: Movie) {
             binding.movie = movie
             binding.executePendingBindings()

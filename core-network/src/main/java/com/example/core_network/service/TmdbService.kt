@@ -10,7 +10,7 @@ import retrofit2.http.Query
  */
 interface TmdbService {
 
-    @GET("discover/movies?language=en-US")
+    @GET("discover/movie?api_key=b54ae81b398a5890951b1449f680b6e3&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&with_watch_monetization_types=flatrate")
     suspend fun fetchDiscoverMovie(
         @Query("page") page: Int = 1
     ): ApiResponse<MovieDiscoverResponse>

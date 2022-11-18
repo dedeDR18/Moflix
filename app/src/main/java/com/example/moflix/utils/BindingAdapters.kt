@@ -10,11 +10,13 @@ import com.example.moflix.R
  */
 object BindingAdapters {
 
+    const val BASE_URL_POSTER = "https://image.tmdb.org/t/p/w780/"
+
     @JvmStatic
     @BindingAdapter("setImage")
     fun setImage(iv: AppCompatImageView, url: String){
         Glide.with(iv.context)
-            .load(url)
+            .load(BASE_URL_POSTER+url)
             .placeholder(R.drawable.ic_image)
             .into(iv)
     }

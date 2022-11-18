@@ -10,14 +10,11 @@ class HttpRequestInterceptor: Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
-        val request = originalRequest.newBuilder()
-            .header("Authorization", "Bearer $token")
-            .header("Content-Type", "application/json;charset=utf-8")
-            .url(originalRequest.url).build()
-        return chain.proceed(request)
+        return chain.proceed(originalRequest)
     }
 
     companion object {
+        const val apikey = "b54ae81b398a5890951b1449f680b6e3"
         const val token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNTRhZTgxYjM5OGE1ODkwOTUxYjE0NDlmNjgwYjZlMyIsInN1YiI6IjVmOTU0MWFjNGY5YTk5MDA0MWUwZGJkYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.beuA4m4CP4MOA-NmifacoJsyqQlZrGbu-LxZfblefkc"
     }
 }

@@ -21,7 +21,7 @@ android {
 
 
 dependencies {
-    implementation(libra.retrofit.moshi)
-    ksp(libra.moshi.codegen)
-    api(libra.timber)
+    implementation(libs.moshi)
+    ksp(libs.moshi.codegen)
+    api(libs.timber)
 }

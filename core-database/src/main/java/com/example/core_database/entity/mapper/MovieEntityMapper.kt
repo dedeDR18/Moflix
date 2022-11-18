@@ -11,6 +11,7 @@ object MovieEntityMapper : EntityMapper<List<Movie>, List<MovieEntity>> {
         return domain.map { movie ->
             MovieEntity(
                 id = movie.id,
+                page = movie.page,
                 originalTitle = movie.original_title,
                 posterPath = movie.poster_path ?: "-",
                 voteAvarage = movie.vote_average
@@ -22,6 +23,7 @@ object MovieEntityMapper : EntityMapper<List<Movie>, List<MovieEntity>> {
         return entity.map { movieEntity ->
             Movie(
                 id = movieEntity.id,
+                page = movieEntity.page,
                 original_title = movieEntity.originalTitle,
                 poster_path = movieEntity.posterPath,
                 vote_average = movieEntity.voteAvarage,
