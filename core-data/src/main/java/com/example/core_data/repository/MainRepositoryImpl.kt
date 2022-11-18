@@ -29,24 +29,23 @@ class MainRepositoryImpl @Inject constructor(
         onComplete: () -> Unit,
         onError: (String?) -> Unit
     ) = flow {
-        var movies = movieDao.getDiscoverMovieList().asDomain()
+        var movies = movieDao.getDiscoverMovieList(page).asDomain()
         if (movies.isEmpty()) {
-            Log.d("MAINREPO", "page = ${page}")
             val response = tmdbClient.fetchDiscoverMovie(page)
             response.suspendOnSuccess {
                 movies = data.results
                 movies.forEach { movie ->
-                    movie.page = 1
+                    movie.page = page
                 }
                 movieDao.insertMovie(movies.asEntity())
-                emit(movieDao.getAllDiscoverMovie().asDomain())
+                emit(movieDao.getAllDiscoverMovie(page).asDomain())
 
 
             }.onFailure {
                 onError(message())
             }
         } else {
-            emit(movieDao.getAllDiscoverMovie().asDomain())
+            emit(movieDao.getAllDiscoverMovie(page).asDomain())
 
         }
     }.onStart { onStart() }.onCompletion { onComplete() }.flowOn(ioDispatcher)

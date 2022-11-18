@@ -18,4 +18,14 @@ object ViewBinding {
         }
     }
 
+    @JvmStatic
+    @BindingAdapter("gone")
+    fun bindGone(view: View, shouldBeGone: Boolean) {
+        view.visibility = if (shouldBeGone) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
+    }
+
 }

@@ -13,11 +13,11 @@ import com.example.core_database.entity.MovieEntity
 @Dao
 interface MovieDao {
 
-    @Query("SELECT * FROM MovieEntity")
-    suspend fun getAllDiscoverMovie(): List<MovieEntity>
+    @Query("SELECT * FROM MovieEntity WHERE page = :page_ ")
+    suspend fun getDiscoverMovieList(page_: Int): List<MovieEntity>
 
-    @Query("SELECT * FROM MovieEntity ")
-    suspend fun getDiscoverMovieList(): List<MovieEntity>
+    @Query("SELECT * FROM MovieEntity WHERE page <= :page_ ORDER BY page ASC")
+    suspend fun getAllDiscoverMovie(page_: Int): List<MovieEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovie(movieList: List<MovieEntity>)
