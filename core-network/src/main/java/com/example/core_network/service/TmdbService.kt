@@ -1,8 +1,10 @@
 package com.example.core_network.service
 
+import com.example.core_model.MovieDetail
 import com.example.core_network.model.dto.MovieDiscoverResponse
 import com.skydoves.sandwich.ApiResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
@@ -14,4 +16,10 @@ interface TmdbService {
     suspend fun fetchDiscoverMovie(
         @Query("page") page: Int = 1
     ): ApiResponse<MovieDiscoverResponse>
+
+    @GET("movie/{idMovie}?api_key=b54ae81b398a5890951b1449f680b6e3&language=en-US")
+    suspend fun fetchMovieDetail(
+        @Path("idMovie") idMovie: Int
+    ): ApiResponse<MovieDetail>
+
 }
