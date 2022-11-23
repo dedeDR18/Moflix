@@ -42,6 +42,7 @@ class MainRepositoryImpl @Inject constructor(
 
 
             }.onFailure {
+                // handles the all error cases from the API request fails.
                 onError(message())
             }
         } else {

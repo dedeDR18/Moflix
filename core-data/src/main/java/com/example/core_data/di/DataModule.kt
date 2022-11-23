@@ -2,6 +2,8 @@ package com.example.core_data.di
 
 import com.example.core_data.repository.MainRepository
 import com.example.core_data.repository.MainRepositoryImpl
+import com.example.core_data.repository.MovieDetailRepository
+import com.example.core_data.repository.MovieDetailRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -19,4 +21,9 @@ interface DataModule {
     fun bindMainRepository(
         mainRepositoryImpl: MainRepositoryImpl
     ): MainRepository
+
+    @Binds
+    fun bindMovieDetailRepository(
+        movieDetailRepositoryImpl: MovieDetailRepositoryImpl
+    ): MovieDetailRepository
 }

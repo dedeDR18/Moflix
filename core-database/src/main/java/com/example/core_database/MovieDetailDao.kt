@@ -12,7 +12,7 @@ import com.example.core_model.MovieDetail
 interface MovieDetailDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertMovieDetail(movie: MovieDetail)
+    suspend fun insertMovieDetail(movie: MovieDetailEntity)
 
     @Query("SELECT * FROM MovieDetailEntity WHERE id = :idMovie")
     suspend fun getMovieDetail(idMovie: Int): MovieDetailEntity?

@@ -11,7 +11,7 @@ import com.example.core_database.entity.MovieEntity
 
 @Database(
     entities = [MovieEntity::class],
-    version = 1,
+    version = 2,
     exportSchema = true
 )
 
