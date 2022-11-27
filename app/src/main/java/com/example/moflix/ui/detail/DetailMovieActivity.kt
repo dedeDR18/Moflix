@@ -46,6 +46,7 @@ class DetailMovieActivity : BindingActivity<ActivityDetailMovieBinding>(R.layout
             val bundle = Bundle().apply {
                 putParcelable(EXTRA_MOVIE, movie)
             }
+
             startActivity(context, intent, bundle)
         }
 
