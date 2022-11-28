@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="data"
-            type="com.example.core_model.MovieDetail" />
+            name="vm"
+            type="com.example.moflix.ui.detail.DetaiViewModel" />
 
     </data>
 
@@ -20,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="450dp"
             android:background="@color/black"
-            setImage="@{data.poster_path}"
+            android:scaleType="fitCenter"
+            setImage="@{vm.movieDetail.poster_path}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginBottom="16dp"
-            android:text="@{String.valueOf(data.vote_average)}"
+            android:text="@{String.valueOf(vm.movieDetail.vote_average)}"
             tools:text="7.7"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -56,7 +57,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
-            android:text="@{data.original_title}"
+            android:text="@{vm.movieDetail.original_title}"
             tools:text="Title title"
             android:textColor="@color/black"
             android:textSize="24sp"
@@ -73,7 +74,7 @@
             android:layout_marginEnd="16dp"
             android:maxLines="5"
             android:ellipsize="end"
-            android:text="@{data.overview}"
+            android:text="@{vm.movieDetail.overview}"
             tools:text="Description lkajdlkl akjdlkas asdsa asdasd asdasd asdasd asdasd asd asdasd asdasd asqweqw qweqwe qweqwe qweqw qweqwe qweqwe qweqweqweqwe qweqweqweqw qweqweq qwe jlkd lakjdlkajd asdjklkajda alkjdlkajsd"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"

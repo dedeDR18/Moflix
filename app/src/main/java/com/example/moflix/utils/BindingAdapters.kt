@@ -1,5 +1,6 @@
 package com.example.moflix.utils
 
+import android.util.Log
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -14,10 +15,14 @@ object BindingAdapters {
 
     @JvmStatic
     @BindingAdapter("setImage")
-    fun setImage(iv: AppCompatImageView, url: String){
-        Glide.with(iv.context)
-            .load(BASE_URL_POSTER+url)
-            .placeholder(R.drawable.ic_image)
-            .into(iv)
+    fun setImage(iv: AppCompatImageView, url: String?){
+        url?.let {
+            Log.d("MAIN", "url = $url")
+            Glide.with(iv.context)
+                .load(BASE_URL_POSTER+it)
+                .placeholder(R.drawable.ic_image)
+                .into(iv)
+        }
+
     }
 }

@@ -28,6 +28,6 @@ class MainActivity : BindingActivity<ActivityMainBinding>(R.layout.activity_main
 
     override fun onClickItem(movie: Movie) {
         Log.d("MAIN", "test click movie = ${movie}")
-//        DetailMovieActivity.runActivity(this, movie)
+        DetailMovieActivity.runActivity(this, movie)
     }
 }

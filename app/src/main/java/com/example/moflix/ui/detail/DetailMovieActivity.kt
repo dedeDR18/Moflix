@@ -30,13 +30,14 @@ class DetailMovieActivity : BindingActivity<ActivityDetailMovieBinding>(R.layout
         DetaiViewModel.provideFactory(detailViewModelFactory, movieDetail.id)
     }
 
-    private val movieDetail: Movie by bundleNonNull(EXTRA_MOVIE)
+    private lateinit var movieDetail: Movie
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        movieDetail = intent.extras?.getParcelable<Movie>(EXTRA_MOVIE)!!
+
         binding {
-            movieDetail = movieDetail
-             = viewModel
+            vm = viewModel
         }
     }
 
@@ -46,10 +47,10 @@ class DetailMovieActivity : BindingActivity<ActivityDetailMovieBinding>(R.layout
 
         fun runActivity(context: Context, movie: Movie) {
             val intent = Intent(context, DetailMovieActivity::class.java)
+            intent.putExtra(EXTRA_MOVIE, movie)
             val bundle = Bundle().apply {
-                putParcelable(EXTRA_MOVIE, movie)
-            }
 
+            }
             startActivity(context, intent, bundle)
         }
 
