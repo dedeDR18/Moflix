@@ -3,6 +3,7 @@ package com.example.core_database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.example.core_database.entity.MovieDetailEntity
 import com.example.core_database.entity.MovieEntity
 
 /**
@@ -10,7 +11,7 @@ import com.example.core_database.entity.MovieEntity
  */
 
 @Database(
-    entities = [MovieEntity::class],
+    entities = [MovieEntity::class, MovieDetailEntity::class],
     version = 2,
     exportSchema = true
 )

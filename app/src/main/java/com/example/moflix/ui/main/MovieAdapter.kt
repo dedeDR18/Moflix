@@ -1,5 +1,8 @@
 package com.example.moflix.ui.main
 
+import android.os.SystemClock
+import android.util.Log
+import android.view.View.OnClickListener
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +16,9 @@ import com.skydoves.bindables.binding
  * Created by Dede Dari Rahmadi on 17/11/22
  */
 
-class MovieAdapter : BindingListAdapter<Movie, MovieAdapter.MovieViewHolder>(diffUtil) {
+class MovieAdapter(private val onClick: OnClickListenerTest) : BindingListAdapter<Movie, MovieAdapter.MovieViewHolder>(diffUtil) {
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder =
         parent.binding<ItemMovieBinding>(R.layout.item_movie).let(::MovieViewHolder)
@@ -26,13 +31,21 @@ class MovieAdapter : BindingListAdapter<Movie, MovieAdapter.MovieViewHolder>(dif
     ) : RecyclerView.ViewHolder(binding.root) {
 
         init {
-
+            Log.d("MAIN", "Init adapter...")
+            binding.root.setOnClickListener {
+                onClick.onClickItem(getItem(position))
+//                val position = bindingAdapterPosition.takeIf { it != RecyclerView.NO_POSITION } ?: return@setOnClickListener
+            }
         }
 
         fun bindMovie(movie: Movie) {
             binding.movie = movie
             binding.executePendingBindings()
         }
+    }
+
+    interface OnClickListenerTest {
+        fun onClickItem(movie: Movie)
     }
 
     companion object {

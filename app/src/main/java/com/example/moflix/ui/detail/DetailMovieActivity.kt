@@ -34,7 +34,10 @@ class DetailMovieActivity : BindingActivity<ActivityDetailMovieBinding>(R.layout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        binding {
+            movieDetail = movieDetail
+             = viewModel
+        }
     }
 
     companion object {
